@@ -109,19 +109,11 @@ public class App {
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());
 
-    // Funktioniert einwandfrei
-    ElfCastle elfCastle = (ElfCastle)app.getCastle();
-    LOGGER.info(elfCastle.getSilmarils());
-
     LOGGER.info("Orc Kingdom");
     app.createKingdom(new OrcKingdomFactory());
     LOGGER.info(app.getArmy().getDescription());
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());
-
-//    ClassCastException zur Laufzeit
-//    ElfCastle orkCastle = (ElfCastle)app.getCastle();
-//    LOGGER.info(orkCastle.getSilmarils());
 
     // Verbesserungspotential (Vermeidung von new)
     KingdomFactory kingdomFactory = KingdomFactoryProducer.getFactory("elf");
