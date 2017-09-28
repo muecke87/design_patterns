@@ -1,4 +1,4 @@
-package com.samu.jsfactory;
+package com.samu.factory.method;
 
 /**
  * Created by sandromuggli on 13.08.17.
