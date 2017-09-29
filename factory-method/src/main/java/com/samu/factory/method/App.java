@@ -4,13 +4,13 @@ package com.samu.factory.method;
  * Created by sandromuggli on 13.08.17.
  */
 
-/*
-    VinylCreator hat nur eine einzige 'create'-Methode und erstellt je nach Parameter (Config) eine EP oder LP.
-    Keine ConcreateCreators notwendig
-    => flexible 2. Variante aus Vorlesung 2, Folie 2
-    => benötigt aber typcast, sofern Client auf konkretes Produkt (hier EP oder LP) zugreifen möchte.
-       GEFAHR: classCastException!
-    => bei schwachtypisierten Sprachen viel eleganter lösbar
+/**
+ *  VinylCreator hat nur eine einzige 'create'-Methode und erstellt je nach Parameter (Config) eine EP oder LP.
+ *   Keine ConcreateCreators notwendig
+ *   => flexible 2. Variante aus Vorlesung 2, Folie 11
+ *   => benötigt aber typecast, sofern Client auf konkretes Produkt (hier EP oder LP) zugreifen möchte.
+ *      GEFAHR: classCastException!
+ *   => bei schwachtypisierten Sprachen viel eleganter lösbar
  */
 public class App {
     public static void main(String[] args) {
