@@ -13,6 +13,7 @@ target
 *.swp
 datanucleus.log
 /bin/
+.DS_STORE
 /bin/
 /bin/
 *.log
