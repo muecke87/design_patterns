@@ -49,13 +49,6 @@ public class AdapterPatternTest {
   @Before
   public void setup() {
     beans = new HashMap<>();
-
-    BattleFishingBoat battleFishingBoat = spy(new BattleFishingBoat());
-    beans.put(BATTLESHIP_BEAN, battleFishingBoat);
-
-    Captain captain = new Captain();
-    captain.setBattleship((BattleFishingBoat) beans.get(BATTLESHIP_BEAN));
-    beans.put(CAPTAIN_BEAN, captain);
   }
 
   /**
@@ -65,8 +58,35 @@ public class AdapterPatternTest {
    * expected by the client ({@link Captain} ).
    */
   @Test
-  public void testAdapter() {
-    BattleShip captain = (BattleShip) beans.get(CAPTAIN_BEAN);
+  public void testObjectAdapter() {
+    BattleFishingBoat battleFishingBoat = spy(new BattleFishingBoat());
+    beans.put(BATTLESHIP_BEAN, battleFishingBoat);
+
+    Captain captain = new Captain();
+    captain.setBattleship((BattleFishingBoat) beans.get(BATTLESHIP_BEAN));
+    beans.put(CAPTAIN_BEAN, captain);
+
+    // when captain moves
+    captain.move();
+
+    // the captain internally calls the battleship object to move
+    BattleShip battleship = (BattleShip) beans.get(BATTLESHIP_BEAN);
+    verify(battleship).move();
+
+    // same with above with firing
+    captain.fire();
+    verify(battleship).fire();
+
+  }
+
+  @Test
+  public void testClassAdapter() {
+    RealBattleFishingBoat realBattleFishingBoat = spy(new RealBattleFishingBoat());
+    beans.put(BATTLESHIP_BEAN, realBattleFishingBoat);
+
+    Captain captain = new Captain();
+    captain.setBattleship((RealBattleFishingBoat) beans.get(BATTLESHIP_BEAN));
+    beans.put(CAPTAIN_BEAN, captain);
 
     // when captain moves
     captain.move();

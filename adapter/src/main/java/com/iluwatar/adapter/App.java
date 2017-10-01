@@ -31,18 +31,13 @@ package com.iluwatar.adapter;
  * <p>
  * There are two variations of the Adapter pattern: The class adapter implements the adaptee's
  * interface whereas the object adapter uses composition to contain the adaptee in the adapter
- * object. This example uses the object adapter approach.
+ * object.
  *
- * <p>
- * The Adapter ({@link BattleFishingBoat}) converts the interface of the adaptee class (
- * {@link FishingBoat}) into a suitable one expected by the client ( {@link BattleShip} ).
- *
- * <p>
- * The story of this implementation is this. <br>
- * Pirates are coming! we need a {@link BattleShip} to fight! We have a {@link FishingBoat} and our
- * captain. We have no time to make up a new ship! we need to reuse this {@link FishingBoat}. The
- * captain needs a battleship which can fire and move. The spec is in {@link BattleShip}. We will
- * use the Adapter pattern to reuse {@link FishingBoat}.
+ * The story of this implementation is this: <br>
+ * Pirates are coming! Our captain of the  {@link RealBattleShip} needs help. There are two captains of {@link FishingBoat}s close to with their boats.
+ * We need their help but have no time to make up two new {@link BattleShip}s! we need to reuse their {@link FishingBoat}s. The two fisherboat
+ * captains need a battleship which can fire and move. The spec is in {@link BattleShip}. We will
+ * use the Adapter pattern to reuse the {@link FishingBoat}s.
  *
  */
 public class App {
@@ -53,8 +48,22 @@ public class App {
    * @param args command line args
    */
   public static void main(String[] args) {
-    Captain captain = new Captain(new BattleFishingBoat());
-    captain.move();
-    captain.fire();
+    Captain captainOfBattleShip = new Captain((new RealBattleShip()));
+    captainOfBattleShip.move();
+    captainOfBattleShip.fire();
+
+    /**
+     * Benutzt den objektbasierten Adapter {@link BattleFishingBoat}
+     */
+    Captain captainOfFirstFisherBoat = new Captain(new BattleFishingBoat());
+    captainOfFirstFisherBoat.move();
+    captainOfFirstFisherBoat.fire();
+
+    /**
+     * Benutzt den klassenbasierten Adapter {@link RealBattleFishingBoat}
+     */
+    Captain captainOfSecondFisherBoat = new Captain(new RealBattleFishingBoat());
+    captainOfSecondFisherBoat.move();
+    captainOfSecondFisherBoat.fire();
   }
 }
