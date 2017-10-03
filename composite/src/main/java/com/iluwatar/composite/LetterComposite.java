@@ -28,7 +28,10 @@ import java.util.List;
 /**
  * 
  * Composite interface
- * 
+ *
+ * TIPP: Lasst Euch vom Namen "Composite" nicht verwirren. Die Klasse ({@link LetterComposite} entspricht der "Component" (Diagramm Buch S. 214)
+ * Die Klassen ({@link Word} und ({@link Sentence} entsprechen je einem "Composite" (aus dem Diagramm Buch S. 214)
+ *
  */
 public abstract class LetterComposite {
 
@@ -36,6 +39,14 @@ public abstract class LetterComposite {
 
   public void add(LetterComposite letter) {
     children.add(letter);
+  }
+
+  public void remove(LetterComposite letter) {
+    children.remove(letter);
+  }
+
+  public LetterComposite getChild(int index) {
+    return children.get(index);
   }
 
   public int count() {
@@ -48,6 +59,7 @@ public abstract class LetterComposite {
 
   /**
    * Print
+   * TIPP: Rekursive Method, ruft sich also selber auf
    */
   public void print() {
     printThisBefore();

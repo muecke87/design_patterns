@@ -36,6 +36,11 @@ public class Letter extends LetterComposite {
   }
 
   @Override
+  public LetterComposite getChild(int index) {
+    throw new Error("getChild not allowed on Letter");
+  }
+
+  @Override
   protected void printThisBefore() {
     System.out.print(c);
   }
