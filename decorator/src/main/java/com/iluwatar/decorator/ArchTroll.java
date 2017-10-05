@@ -47,7 +47,8 @@ public class ArchTroll extends TrollDecorator {
     return super.getAttackPower() + 10;
   }
 
-  public void arrowAttack() {
+  // wichtig private, sonst würde die SST eines Trolls erweitert, was ja dann eher ein Adapter wäre;-)
+  private void arrowAttack() {
     LOGGER.info("The troll shoots an arrow at you!");
   }
 }
