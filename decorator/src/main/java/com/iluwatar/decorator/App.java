@@ -61,5 +61,17 @@ public class App {
     clubbed.attack();
     clubbed.fleeBattle();
     LOGGER.info("Clubbed troll power {}.\n", clubbed.getAttackPower());
+
+    LOGGER.info("A troll with two huge clubs surprises you.");
+    Troll doubleClubbed = new ClubbedTroll(new ClubbedTroll(new SimpleTroll()));
+    doubleClubbed.attack();
+    doubleClubbed.fleeBattle();
+    LOGGER.info("Double clubbed troll power {}.\n", doubleClubbed.getAttackPower());
+
+    LOGGER.info("A troll with a huge club and an arch surprises you.");
+    Troll clubbedArcherTroll = new ArchTroll(new ClubbedTroll(new SimpleTroll()));
+    clubbedArcherTroll.attack();
+    clubbedArcherTroll.fleeBattle();
+    LOGGER.info("Clubbed arch troll power {}.\n", clubbedArcherTroll.getAttackPower());
   }
 }
